@@ -8,8 +8,11 @@
 
 #include "Humanoid.hpp"
 
-class Vampire: Humanoid {
+class Vampire : Humanoid {
+public:
+    void setAction(const Field* field) override;
 
+    void executeAction(const Field* field) override;
 };
 
 

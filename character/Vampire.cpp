@@ -3,3 +3,9 @@
 //
 
 #include "Vampire.hpp"
+
+void Vampire::setAction(const Field* field) {
+}
+
+void Vampire::executeAction(const Field* field) {
+}
