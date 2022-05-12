@@ -3,7 +3,7 @@
 
 
 #include "Field.hpp"
-#include "core/Action.hpp"
+#include "core/action/Action.hpp"
 
 class Humanoid {
     Action* nextAction;

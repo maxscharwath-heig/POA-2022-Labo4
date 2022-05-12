@@ -10,8 +10,8 @@ add_executable(POA_Labo4
         character/Human.cpp character/Human.hpp
         character/Vampire.cpp character/Vampire.hpp
         character/Buffy.cpp character/Buffy.hpp
-        core/Action.cpp core/Action.hpp
+        core/action/Action.cpp core/action/Action.hpp
         Field.cpp Field.hpp
         Game.hpp
         Game.cpp
-        main.cpp)
+        main.cpp core/action/KillAction.cpp core/action/KillAction.hpp core/action/MoveAction.cpp core/action/MoveAction.hpp)
