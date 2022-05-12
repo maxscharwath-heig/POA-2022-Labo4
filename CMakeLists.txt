@@ -6,8 +6,9 @@ set(CMAKE_CXX_STANDARD 11)
 include_directories(.)
 
 add_executable(POA_Labo4
-        Humanoid.cpp
-        Humanoid.hpp
-        Field.cpp
-        Field.hpp
+        character/Humanoid.cpp character/Humanoid.hpp
+        character/Human.cpp character/Human.hpp
+        character/Vampire.cpp character/Vampire.hpp
+        character/Buffy.cpp character/Buffy.hpp
+        Field.cpp Field.hpp
         main.cpp)
