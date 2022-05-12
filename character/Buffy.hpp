@@ -4,8 +4,11 @@
 
 #include "Humanoid.hpp"
 
-class Buffy: public Humanoid {
- bool grossePute;
+class Buffy : public Humanoid {
+public:
+    void setAction(const Field* field) override;
+
+    void executeAction(const Field* field) override;
 };
 
 

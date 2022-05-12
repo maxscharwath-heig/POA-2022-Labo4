@@ -3,3 +3,11 @@
 //
 
 #include "Human.hpp"
+
+void Human::setAction(const Field* field) {
+
+}
+
+void Human::executeAction(const Field* field) {
+
+}
