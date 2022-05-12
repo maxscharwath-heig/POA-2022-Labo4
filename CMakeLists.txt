@@ -11,4 +11,6 @@ add_executable(POA_Labo4
         character/Vampire.cpp character/Vampire.hpp
         character/Buffy.cpp character/Buffy.hpp
         Field.cpp Field.hpp
+        Game.hpp
+        Game.cpp
         main.cpp)
