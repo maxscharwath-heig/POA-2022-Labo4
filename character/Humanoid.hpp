@@ -3,8 +3,10 @@
 
 
 #include "Field.hpp"
+#include "core/Action.hpp"
 
 class Humanoid {
+    Action* nextAction;
 public:
     virtual ~Humanoid() = default;
 
