@@ -6,6 +6,7 @@
 #include "core/action/Action.hpp"
 
 class Action;
+
 class Field;
 
 class Humanoid {
@@ -26,6 +27,10 @@ public:
     virtual bool isAlive() const = 0;
 
     virtual std::ostream& toStream(std::ostream& os) const = 0;
+
+    unsigned getX() const;
+
+    unsigned getY() const;
 
 protected:
     Humanoid();

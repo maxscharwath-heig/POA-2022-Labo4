@@ -10,7 +10,7 @@ public:
 
     void executeAction(const Field* field) override;
 
-    std::ostream& toStream(std::ostream &os) const override;
+    std::ostream& toStream(std::ostream& os) const override;
 };
 
 

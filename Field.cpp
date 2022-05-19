@@ -15,17 +15,17 @@ unsigned Field::nextTurn() {
     for (std::list<Humanoid*>::iterator it = _humanoids.begin(); it != _humanoids.end(); it++)
         // (*it)->setAction(*this);
 
-    // Executer les actions
-    for (std::list<Humanoid*>::iterator it = _humanoids.begin(); it != _humanoids.end(); it++)
-        // (*it)->executeAction(*this);
+        // Executer les actions
+        for (std::list<Humanoid*>::iterator it = _humanoids.begin(); it != _humanoids.end(); it++)
+            // (*it)->executeAction(*this);
 
-    // Enlever les humanoides tués
-    for (std::list<Humanoid*>::iterator it = _humanoids.begin(); it != _humanoids.end();)
-        if (!(*it)->isAlive()) {
-            it = _humanoids.erase(it); // suppression de l’élément dans la liste
-            delete *it; // destruction de l’humanoide référencé
-        } else
-            ++it;
+            // Enlever les humanoides tués
+            for (std::list<Humanoid*>::iterator it = _humanoids.begin(); it != _humanoids.end();)
+                if (!(*it)->isAlive()) {
+                    it = _humanoids.erase(it); // suppression de l’élément dans la liste
+                    delete *it; // destruction de l’humanoide référencé
+                } else
+                    ++it;
 
     return ++_turn;
 }
@@ -44,4 +44,16 @@ unsigned Field::getNbHumans() const {
 
 unsigned Field::getNbVampires() const {
     return _nbVampire;
+}
+
+Humanoid** Field::getHumanoid2DArray() const {
+    auto array = new Humanoid* [_height * _width];
+    for (unsigned i = 0; i < _height * _width; i++)
+        array[i] = nullptr;
+    for (auto& humanoid: _humanoids) {
+        if (humanoid->getX() >= _width || humanoid->getY() >= _height)
+            continue;
+        array[humanoid->getX() + humanoid->getY() * _width] = humanoid;
+    }
+    return array;
 }

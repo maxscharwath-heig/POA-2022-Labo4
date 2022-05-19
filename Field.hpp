@@ -20,6 +20,8 @@ public:
 
     unsigned nextTurn();
 
+    Humanoid** getHumanoid2DArray() const;
+
 private:
     const unsigned _height;
     const unsigned _width;

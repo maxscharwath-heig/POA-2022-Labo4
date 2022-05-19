@@ -5,6 +5,7 @@ FieldDisplayer::FieldDisplayer(const Field& field) : field(field) {
 }
 
 void FieldDisplayer::display() {
+    auto humanoids = field.getHumanoid2DArray();
     unsigned width = field.getWidth() + 2;
     unsigned height = field.getHeight() + 2;
     for (unsigned i = 0; i < height; i++) {
@@ -18,9 +19,15 @@ void FieldDisplayer::display() {
             } else {
                 unsigned x = j - 1;
                 unsigned y = i - 1;
-                std::cout << " ";
+                auto humanoid = humanoids[x + y * field.getWidth()];
+                if (humanoid != nullptr) {
+                    std::cout << humanoid;
+                } else {
+                    std::cout << " ";
+                }
             }
         }
         std::cout << std::endl;
     }
+    delete humanoids;
 }
