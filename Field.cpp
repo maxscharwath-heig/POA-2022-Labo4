@@ -12,14 +12,16 @@ Field::Field(unsigned int height, unsigned int width, unsigned int nbHumans, uns
                                                                                                               nbVampires) {
 
     // TODO: random positions
-    _humanoids.emplace_back(new Buffy(0, 1));
+
+
+    _humanoids.emplace_back(new Buffy(rand() % _width, rand() % _height));
 
     for (size_t i = 0; i < nbHumans; ++i) {
-        _humanoids.emplace_back(new Human(0, 1));
+        _humanoids.emplace_back(new Human(rand() % _width, rand() % _height));
     }
 
     for (size_t i = 0; i < nbVampires; ++i) {
-        _humanoids.emplace_back(new Vampire(0, 1));
+        _humanoids.emplace_back(new Vampire(rand() % _width, rand() % _height));
     }
 }
 
@@ -39,7 +41,7 @@ unsigned Field::nextTurn() {
                     delete *it; // destruction de l’humanoide référencé
                 } else {
                     ++it;
-        }
+                }
 
     return ++_turn;
 }

@@ -21,7 +21,7 @@ void FieldDisplayer::display() {
                 unsigned y = i - 1;
                 auto humanoid = humanoids[x + y * field.getWidth()];
                 if (humanoid != nullptr) {
-                    std::cout << humanoid;
+                    std::cout << *humanoid;
                 } else {
                     std::cout << " ";
                 }
