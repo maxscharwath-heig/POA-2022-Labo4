@@ -1,12 +1,10 @@
-//
-// Created by Maxime Scharwath on 12.05.2022.
-//
-
 #ifndef POA_LABO4_ACTION_HPP
 #define POA_LABO4_ACTION_HPP
 
 
-#include "Field.hpp"
+#include "../Field.hpp"
+
+class Field;
 
 class Action {
 public:
