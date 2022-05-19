@@ -2,7 +2,7 @@
 #define POA_LABO4_ACTION_HPP
 
 
-#include "../Field.hpp"
+#include "Field.hpp"
 
 class Field;
 
