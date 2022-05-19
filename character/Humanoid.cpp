@@ -1,5 +1,8 @@
-//
-// Created by nicolas on 12.05.22.
-//
-
 #include "Humanoid.hpp"
+
+Humanoid::Humanoid() : nextAction(nullptr) {}
+
+std::ostream& operator<<(std::ostream& os, const Humanoid& h) {
+    return h.toStream(os);
+}
+
