@@ -5,6 +5,14 @@ class Field {
 public:
     Field(unsigned height, unsigned width, unsigned nbHumans, unsigned nbVampires);
 
+    unsigned getHeight() const;
+
+    unsigned getWidth() const;
+
+    unsigned getNbHumans() const;
+
+    unsigned getNbVampires() const;
+
 private:
     const unsigned _height;
     const unsigned _width;

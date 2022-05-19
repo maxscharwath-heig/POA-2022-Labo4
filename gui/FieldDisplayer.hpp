@@ -5,8 +5,13 @@
 #include "Field.hpp"
 
 class FieldDisplayer {
-
+public:
     explicit FieldDisplayer(const Field& field);
+
+    void display();
+
+private:
+    const Field& field;
 
 };
 
