@@ -1,5 +1,8 @@
 #include "Field.hpp"
 #include "character/Humanoid.hpp"
+#include "character/Buffy.hpp"
+#include "character/Human.hpp"
+#include "character/Vampire.hpp"
 
 Field::Field(unsigned int height, unsigned int width, unsigned int nbHumans, unsigned int nbVampires) : _height(height),
                                                                                                         _width(width),
@@ -8,6 +11,16 @@ Field::Field(unsigned int height, unsigned int width, unsigned int nbHumans, uns
                                                                                                         _nbVampire(
                                                                                                               nbVampires) {
 
+    // TODO: random positions
+    _humanoids.emplace_back(new Buffy(0, 1));
+
+    for (size_t i = 0; i < nbHumans; ++i) {
+        _humanoids.emplace_back(new Human(0, 1));
+    }
+
+    for (size_t i = 0; i < nbVampires; ++i) {
+        _humanoids.emplace_back(new Vampire(0, 1));
+    }
 }
 
 unsigned Field::nextTurn() {
@@ -24,8 +37,10 @@ unsigned Field::nextTurn() {
         if (!(*it)->isAlive()) {
             it = _humanoids.erase(it); // suppression de l’élément dans la liste
             delete *it; // destruction de l’humanoide référencé
-        } else
+        } else {
             ++it;
+        }
+
 
     return ++_turn;
 }

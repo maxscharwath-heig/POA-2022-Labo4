@@ -17,8 +17,6 @@ public:
 
     virtual void executeAction(const Field* field) = 0;
 
-    virtual void getColor() const = 0;
-
     virtual void setNextAction(const Action* action) {
         nextAction = action;
     }
@@ -27,8 +25,21 @@ public:
 
     virtual std::ostream& toStream(std::ostream& os) const = 0;
 
+    void setX(unsigned x);
+
+    void setY(unsigned y);
+
+    unsigned getX() const;
+
+    unsigned getY() const;
+
 protected:
-    Humanoid();
+    Humanoid(unsigned x, unsigned y);
+
+
+private:
+    unsigned _posX;
+    unsigned _posY;
 };
 
 std::ostream& operator<<(std::ostream& os, const Humanoid& h);

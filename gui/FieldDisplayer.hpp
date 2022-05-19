@@ -12,7 +12,6 @@ public:
 
 private:
     const Field& field;
-
 };
 
 
