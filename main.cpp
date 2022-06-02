@@ -38,6 +38,7 @@ int main() {
                 case 's': //statistics
                     break;
                 case 'n': //next
+                    field.nextTurn();
                     break;
                 default: //do nothing
                     break;

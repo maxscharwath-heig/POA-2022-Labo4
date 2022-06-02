@@ -30,9 +30,8 @@ unsigned Field::nextTurn() {
 
     // Executer les actions
     for (std::list<Humanoid*>::iterator it = _humanoids.begin(); it != _humanoids.end(); it++) {
-
+        (*it)->executeAction(*this);
     }
-    // (*it)->executeAction(*this);
 
     // Enlever les humanoides tués
     for (std::list<Humanoid*>::iterator it = _humanoids.begin(); it != _humanoids.end();) {
@@ -65,8 +64,10 @@ unsigned Field::getNbVampires() const {
 
 Humanoid** Field::getHumanoid2DArray() const {
     auto array = new Humanoid* [_height * _width];
-    for (unsigned i = 0; i < _height * _width; i++)
+    for (unsigned i = 0; i < _height * _width; i++) {
         array[i] = nullptr;
+    }
+
     for (auto& humanoid: _humanoids) {
         if (humanoid->getX() >= _width || humanoid->getY() >= _height)
             continue;

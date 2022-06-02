@@ -10,7 +10,6 @@ class Action;
 class Field;
 
 class Humanoid {
-    const Action* nextAction;
 public:
     virtual ~Humanoid() = default;
 
@@ -18,9 +17,7 @@ public:
 
     virtual void executeAction(const Field& field) = 0;
 
-    virtual void setNextAction(const Action* action) {
-        nextAction = action;
-    }
+    virtual void setNextAction(Action& action);
 
     virtual bool isAlive() const = 0;
 
@@ -36,7 +33,7 @@ public:
 
 protected:
     Humanoid(unsigned x, unsigned y);
-
+    Action* nextAction;
 
 private:
     unsigned _posX;

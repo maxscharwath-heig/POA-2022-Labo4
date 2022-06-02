@@ -18,6 +18,10 @@ unsigned Humanoid::getY() const {
     return _posY;
 }
 
+void Humanoid::setNextAction(Action& action) {
+    this->nextAction = &action;
+}
+
 std::ostream& operator<<(std::ostream& os, const Humanoid& h) {
     return h.toStream(os);
 }

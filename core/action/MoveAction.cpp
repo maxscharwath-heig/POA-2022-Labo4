@@ -1,11 +1,9 @@
-//
-// Created by Maxime Scharwath on 12.05.2022.
-//
-
 #include "MoveAction.hpp"
 
-MoveAction::MoveAction(Humanoid* who, unsigned x, unsigned y) {
+MoveAction::MoveAction(Humanoid* who, unsigned x, unsigned y): who(who), toX(x), toY(y) {
 }
 
 void MoveAction::execute(const Field& f) {
+    who->setX(toX);
+    who->setY(toY);
 }
