@@ -7,9 +7,9 @@
 Field::Field(unsigned int height, unsigned int width, unsigned int nbHumans, unsigned int nbVampires) : _height(height),
                                                                                                         _width(width),
                                                                                                         _nbHumans(
-                                                                                                                nbVampires),
+                                                                                                              nbVampires),
                                                                                                         _nbVampire(
-                                                                                                                nbVampires) {
+                                                                                                              nbVampires) {
 
     _humanoids.emplace_back(new Buffy(rand() % _width, rand() % _height));
 

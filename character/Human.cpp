@@ -21,9 +21,13 @@ std::ostream& Human::toStream(std::ostream& os) const {
 }
 
 bool Human::isAlive() const {
-    return true;
+    return alive;
 }
 
 Human::Human(unsigned int x, unsigned int y) : Humanoid(x, y) {
 
+}
+
+void Human::kill() {
+    alive = false;
 }

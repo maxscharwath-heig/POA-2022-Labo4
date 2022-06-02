@@ -15,6 +15,8 @@ public:
     std::ostream& toStream(std::ostream& os) const override;
 
     bool isAlive() const override;
+
+    void kill() override;
 };
 
 

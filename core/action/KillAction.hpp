@@ -14,6 +14,9 @@ public:
     explicit KillAction(Humanoid* h);
 
     void execute(const Field& f) override;
+
+private:
+    Humanoid* _humanoid;
 };
 
 

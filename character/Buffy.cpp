@@ -1,7 +1,14 @@
+#include <iostream>
 #include "Buffy.hpp"
+#include "Vampire.hpp"
 
 void Buffy::setAction(const Field& field) {
-
+    auto v = field.getClosestHumanoid<Vampire>(this);
+    if (v != nullptr) {
+        std::cout << "Buffy at " << getX() << " " << getY() << " is going to attack " << v->getX() << " " << v->getY()
+                  <<
+                  std::endl;
+    }
 }
 
 void Buffy::executeAction(const Field& field) {
@@ -17,3 +24,7 @@ bool Buffy::isAlive() const {
 }
 
 Buffy::Buffy(unsigned int x, unsigned int y) : Humanoid(x, y) {}
+
+void Buffy::kill() {
+    // I am Immortal MOUAHAHAHAH
+}

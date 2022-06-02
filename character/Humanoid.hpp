@@ -34,6 +34,8 @@ public:
 
     void setY(unsigned y);
 
+    virtual void kill() = 0;
+
 protected:
     Humanoid(unsigned x, unsigned y);
 

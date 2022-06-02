@@ -15,7 +15,11 @@ std::ostream& Vampire::toStream(std::ostream& os) const {
 }
 
 bool Vampire::isAlive() const {
-    return true;
+    return alive;
 }
 
 Vampire::Vampire(unsigned int x, unsigned int y) : Humanoid(x, y) {}
+
+void Vampire::kill() {
+    alive = false;
+}

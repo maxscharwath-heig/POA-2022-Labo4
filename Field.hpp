@@ -22,6 +22,9 @@ public:
 
     Humanoid** getHumanoid2DArray() const;
 
+    template<class T>
+    T* getClosestHumanoid(Humanoid* humanoid) const;
+
 private:
     const unsigned _height;
     const unsigned _width;
@@ -32,5 +35,20 @@ private:
     std::list<Humanoid*> _humanoids;
 };
 
+template<class T>
+T* Field::getClosestHumanoid(Humanoid* humanoid) const {
+    T* closest = nullptr;
+    for (auto& h: _humanoids) {
+        if (h == humanoid || dynamic_cast<T*>(h) == nullptr)
+            continue;
+        if (closest == nullptr ||
+            (humanoid->getX() - h->getX()) * (humanoid->getX() - h->getX()) +
+            (humanoid->getY() - h->getY()) * (humanoid->getY() - h->getY()) <
+            (humanoid->getX() - closest->getX()) * (humanoid->getX() - closest->getX()) +
+            (humanoid->getY() - closest->getY()) * (humanoid->getY() - closest->getY()))
+            closest = dynamic_cast<T*>(h);
+    }
+    return closest;
+}
 
 #endif //POA_LABO4_FIELD_HPP
