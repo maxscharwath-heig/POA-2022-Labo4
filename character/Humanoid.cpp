@@ -1,6 +1,7 @@
+#include <iostream>
 #include "Humanoid.hpp"
 
-Humanoid::Humanoid(unsigned x, unsigned y) : _posX(x), _posY(y), nextAction(nullptr) {}
+Humanoid::Humanoid(unsigned x, unsigned y) : _posX(x), _posY(y), _nextAction(nullptr) {}
 
 void Humanoid::setX(unsigned int x) {
     _posX = x;
@@ -18,8 +19,17 @@ unsigned Humanoid::getY() const {
     return _posY;
 }
 
-void Humanoid::setNextAction(Action& action) {
-    this->nextAction = &action;
+void Humanoid::setNextAction(Action* action) {
+    delete _nextAction;
+    _nextAction = action;
+}
+
+void Humanoid::executeAction(Field& field) {
+    if (_nextAction != nullptr) {
+        _nextAction->execute(field);
+        delete _nextAction;
+        _nextAction = nullptr;
+    }
 }
 
 std::ostream& operator<<(std::ostream& os, const Humanoid& h) {

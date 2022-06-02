@@ -1,3 +1,4 @@
+#include <iostream>
 #include "Field.hpp"
 #include "character/Humanoid.hpp"
 #include "character/Buffy.hpp"
@@ -11,15 +12,19 @@ Field::Field(unsigned int height, unsigned int width, unsigned int nbHumans, uns
                                                                                                         _nbVampire(
                                                                                                               nbVampires) {
 
-    _humanoids.emplace_back(new Buffy(rand() % _width, rand() % _height));
+    add(new Buffy(rand() % _width, rand() % _height));
 
     for (size_t i = 0; i < nbHumans; ++i) {
-        _humanoids.emplace_back(new Human(rand() % _width, rand() % _height));
+        add(new Human(rand() % _width, rand() % _height));
     }
 
     for (size_t i = 0; i < nbVampires; ++i) {
-        _humanoids.emplace_back(new Vampire(rand() % _width, rand() % _height));
+        add(new Vampire(rand() % _width, rand() % _height));
     }
+}
+
+void Field::add(Humanoid* h) {
+    _humanoids.emplace_back(h);
 }
 
 unsigned Field::nextTurn() {
@@ -33,15 +38,16 @@ unsigned Field::nextTurn() {
         (*it)->executeAction(*this);
     }
 
-    // Enlever les humanoides tués
+    // Enlever les humanoides tués et delete
     for (std::list<Humanoid*>::iterator it = _humanoids.begin(); it != _humanoids.end();) {
         if (!(*it)->isAlive()) {
-            it = _humanoids.erase(it); // suppression de l’élément dans la liste
-            delete *it; // destruction de l’humanoide référencé
+            delete (*it);
+            it = _humanoids.erase(it);
         } else {
             ++it;
         }
     }
+
 
     return ++_turn;
 }

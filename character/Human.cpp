@@ -3,22 +3,17 @@
 #include "core/action/MoveAction.hpp"
 
 void Human::setAction(const Field& field) {
-    delete nextAction; // delete previous
     int nextX, nextY;
 
     do {
-        nextX = getX() + rand() % 3 - 1;
-        nextY = getY() + rand() % 3 - 1;
+        nextX = (int) getX() + rand() % 3 - 1;
+        nextY = (int) getY() + rand() % 3 - 1;
 
     } while ((nextX == 0 && nextY == 0)
              || nextX < 0 || nextX >= field.getWidth()
              || nextY < 0 || nextY >= field.getHeight());
 
-    nextAction = new MoveAction(this, nextX, nextY);
-}
-
-void Human::executeAction(const Field& field) {
-    nextAction->execute(field);
+    setNextAction(new MoveAction(this, nextX, nextY));
 }
 
 std::ostream& Human::toStream(std::ostream& os) const {
@@ -26,7 +21,7 @@ std::ostream& Human::toStream(std::ostream& os) const {
 }
 
 bool Human::isAlive() const {
-    return alive;
+    return _alive;
 }
 
 Human::Human(unsigned int x, unsigned int y) : Humanoid(x, y) {
@@ -34,5 +29,5 @@ Human::Human(unsigned int x, unsigned int y) : Humanoid(x, y) {
 }
 
 void Human::kill() {
-    alive = false;
+    _alive = false;
 }

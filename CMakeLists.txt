@@ -12,6 +12,9 @@ add_executable(POA_Labo4
         character/Buffy.cpp character/Buffy.hpp
         gui/FieldDisplayer.hpp gui/FieldDisplayer.cpp
         core/action/Action.cpp core/action/Action.hpp
+        core/action/KillAction.cpp core/action/KillAction.hpp
+        core/action/MoveAction.cpp core/action/MoveAction.hpp
+        core/action/TransformAction.cpp core/action/TransformAction.hpp
         Field.cpp Field.hpp
         Game.hpp Game.cpp
-        main.cpp core/action/KillAction.cpp core/action/KillAction.hpp core/action/MoveAction.cpp core/action/MoveAction.hpp)
+        main.cpp)

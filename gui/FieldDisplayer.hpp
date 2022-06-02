@@ -11,11 +11,11 @@ public:
     void display();
 
     void static clear() {
-        #if defined _WIN32
-                system("cls");
-        #else
-                system("clear");
-        #endif
+#if defined _WIN32
+        system("cls");
+#else
+        system("clear");
+#endif
     }
 
 private:

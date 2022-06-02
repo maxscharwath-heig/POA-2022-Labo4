@@ -15,11 +15,13 @@ public:
 
     virtual void setAction(const Field& field) = 0;
 
-    virtual void executeAction(const Field& field) = 0;
+    void executeAction(Field& field);
 
-    virtual void setNextAction(Action& action);
+    void setNextAction(Action* action);
 
     virtual bool isAlive() const = 0;
+
+    virtual void kill() = 0;
 
     virtual std::ostream& toStream(std::ostream& os) const = 0;
 
@@ -31,15 +33,13 @@ public:
 
     void setY(unsigned y);
 
-    virtual void kill() = 0;
-
 protected:
     Humanoid(unsigned x, unsigned y);
-    Action* nextAction;
 
 private:
     unsigned _posX;
     unsigned _posY;
+    Action* _nextAction = nullptr;
 };
 
 std::ostream& operator<<(std::ostream& os, const Humanoid& h);

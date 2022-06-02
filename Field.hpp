@@ -22,6 +22,8 @@ public:
 
     Humanoid** getHumanoid2DArray() const;
 
+    void add(Humanoid* h);
+
     template<class T>
     T* getClosestHumanoid(Humanoid* humanoid) const;
 
@@ -30,7 +32,7 @@ private:
     const unsigned _width;
     const unsigned _nbHumans;
     const unsigned _nbVampire;
-    unsigned _turn;
+    unsigned _turn = 0;
 
     std::list<Humanoid*> _humanoids;
 };

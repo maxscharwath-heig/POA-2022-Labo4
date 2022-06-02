@@ -9,7 +9,7 @@ class Action {
 public:
     virtual ~Action() = default;
 
-    virtual void execute(const Field& f) = 0;
+    virtual void execute(Field& f) = 0;
 };
 
 

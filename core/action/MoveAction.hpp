@@ -8,7 +8,7 @@ class MoveAction : public Action {
 public:
     MoveAction(Humanoid* h, unsigned x, unsigned y);
 
-    void execute(const Field& f) override;
+    void execute(Field& f) override;
 
 private:
     Humanoid* who;

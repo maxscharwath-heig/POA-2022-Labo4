@@ -13,7 +13,7 @@ class KillAction : public Action {
 public:
     explicit KillAction(Humanoid* h);
 
-    void execute(const Field& f) override;
+    void execute(Field& f) override;
 
 private:
     Humanoid* _humanoid;
