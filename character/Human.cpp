@@ -1,19 +1,24 @@
 #include <iostream>
 #include "Human.hpp"
+#include "core/action/MoveAction.hpp"
 
 void Human::setAction(const Field& field) {
-    // Random between -1 et 1
-    // Random new x
-    int randomNum = rand() % 3 + (-1);
+    delete nextAction; // delete previous
+    int nextX, nextY;
 
-    std::cout << randomNum;
+    do {
+        nextX = getX() + rand() % 3 - 1;
+        nextY = getY() + rand() % 3 - 1;
 
-    // const MoveAction next(this, );
-    // setNextAction()
+    } while ((nextX == 0 && nextY == 0)
+             || nextX < 0 || nextX >= field.getWidth()
+             || nextY < 0 || nextY >= field.getHeight());
+
+    nextAction = new MoveAction(this, nextX, nextY);
 }
 
 void Human::executeAction(const Field& field) {
-
+    nextAction->execute(field);
 }
 
 std::ostream& Human::toStream(std::ostream& os) const {

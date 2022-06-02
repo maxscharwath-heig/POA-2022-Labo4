@@ -1,7 +1,6 @@
 #ifndef POA_LABO4_ACTION_HPP
 #define POA_LABO4_ACTION_HPP
 
-
 #include "Field.hpp"
 
 class Field;
