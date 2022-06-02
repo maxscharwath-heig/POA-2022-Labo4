@@ -1,7 +1,3 @@
-//
-// Created by Maxime Scharwath on 12.05.2022.
-//
-
 #ifndef POA_LABO4_MOVEACTION_HPP
 #define POA_LABO4_MOVEACTION_HPP
 

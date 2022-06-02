@@ -1,10 +1,18 @@
+#include <iostream>
 #include "Human.hpp"
 
-void Human::setAction(const Field* field) {
+void Human::setAction(const Field& field) {
+    // Random between -1 et 1
+    // Random new x
+    int randomNum = rand() % 3 + (-1);
 
+    std::cout << randomNum;
+
+    // const MoveAction next(this, );
+    // setNextAction()
 }
 
-void Human::executeAction(const Field* field) {
+void Human::executeAction(const Field& field) {
 
 }
 

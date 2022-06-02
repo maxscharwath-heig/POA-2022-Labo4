@@ -14,9 +14,9 @@ class Humanoid {
 public:
     virtual ~Humanoid() = default;
 
-    virtual void setAction(const Field* field) = 0;
+    virtual void setAction(const Field& field) = 0;
 
-    virtual void executeAction(const Field* field) = 0;
+    virtual void executeAction(const Field& field) = 0;
 
     virtual void setNextAction(const Action* action) {
         nextAction = action;
