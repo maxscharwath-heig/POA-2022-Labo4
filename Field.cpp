@@ -81,3 +81,7 @@ Humanoid** Field::getHumanoid2DArray() const {
     }
     return array;
 }
+
+unsigned Field::getTurn() {
+    return _turn;
+}

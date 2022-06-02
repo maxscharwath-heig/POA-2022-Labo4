@@ -27,6 +27,8 @@ public:
     template<class T>
     T* getClosestHumanoid(Humanoid* humanoid) const;
 
+    unsigned getTurn();
+
 private:
     const unsigned _height;
     const unsigned _width;

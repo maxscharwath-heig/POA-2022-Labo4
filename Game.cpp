@@ -1,5 +1,6 @@
 #include <limits>
 #include <iostream>
+#include <thread>
 #include "Game.hpp"
 
 void Game::play() {
@@ -9,10 +10,11 @@ void Game::play() {
         FieldDisplayer::clear();
         _fieldDisplayer->display();
         if (autoPlay) {
+            std::this_thread::sleep_for(std::chrono::milliseconds(100));
             _field->nextTurn();
             continue;
         }
-        std::cout << "[0] q>uit s>tatistics n>ext : ";
+        std::cout << "[" << _field->getTurn() << "] q>uit s>tatistics n>ext : ";
         char c;
         std::cin >> c;
         if (!std::cin.fail()) {
