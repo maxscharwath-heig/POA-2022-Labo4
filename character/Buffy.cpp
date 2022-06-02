@@ -1,14 +1,22 @@
 #include <iostream>
 #include "Buffy.hpp"
-#include "Human.hpp"
+#include "Vampire.hpp"
+#include "core/action/KillAction.hpp"
+#include "core/action/MoveAction.hpp"
 
 void Buffy::setAction(const Field& field) {
-    auto h = field.getClosestHumanoid<Human>(this);
-    if (h == nullptr) return;
-    auto x = getX();
-    auto y = getY();
-    setX((x > h->getX()) ? x - 1 : x + 1);
-    setY((y > h->getY()) ? y - 1 : y + 1);
+    auto v = field.getClosestHumanoid<Vampire>(this);
+    if (v == nullptr) return;
+    unsigned x = getX();
+    unsigned y = getY();
+
+    if (abs((int) x - (int) v->getX()) <= 1 && abs((int) y - (int) v->getY()) <= 1) { //TODO: check if this is correct
+        setNextAction(new KillAction(v));
+    } else {
+        if (x != v->getX()) x += x > v->getX() ? -1 : 1;
+        if (y != v->getY()) y += y > v->getY() ? -1 : 1;
+        setNextAction(new MoveAction(this, x, y));
+    }
 }
 
 std::ostream& Buffy::toStream(std::ostream& os) const {

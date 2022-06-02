@@ -1,12 +1,14 @@
 #ifndef POA_LABO4_GAME_HPP
 #define POA_LABO4_GAME_HPP
 
+#include <ctime>
 #include "Field.hpp"
 #include "gui/FieldDisplayer.hpp"
 
 class Game {
 public:
     Game(unsigned height, unsigned width, unsigned nbHumans, unsigned nbVampires) {
+        srand(time(NULL));
         _field = new Field(height, width, nbHumans, nbVampires);
         _fieldDisplayer = new FieldDisplayer(*_field);
     }
