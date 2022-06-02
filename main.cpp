@@ -3,19 +3,29 @@
 #include "Field.hpp"
 #include "gui/FieldDisplayer.hpp"
 
+void clear() {
+#if defined _WIN32
+    system("cls");
+#elif defined (__LINUX__) || defined(__gnu_linux__) || defined(__linux__)
+    system("clear");
+#elif defined (__APPLE__)
+    system("clear");
+#endif
+}
+
 int main() {
     std::cout << "\033[1;33mBuffy\033[0m" << std::endl;
     std::cout << "\033[1;35mHuman\033[0m" << std::endl;
     std::cout << "\033[1;31mVampire\033[0m" << std::endl;
 
     //create a field
-    Field field(50, 50, 10, 10);
+    Field field(30, 50, 10, 10);
     FieldDisplayer fieldDisplayer(field);
 
     //todo put this in a function
     bool continueLoop = true;
     do {
-        //todo clear screen
+        clear();
         fieldDisplayer.display();
         std::cout << "[0] q>uit s>tatistics n>ext : ";
         char c;
