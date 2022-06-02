@@ -2,19 +2,24 @@
 #define POA_LABO4_GAME_HPP
 
 #include "Field.hpp"
+#include "gui/FieldDisplayer.hpp"
 
 class Game {
-    const Field* _field;
-
 public:
     Game(unsigned height, unsigned width, unsigned nbHumans, unsigned nbVampires) {
         _field = new Field(height, width, nbHumans, nbVampires);
+        _fieldDisplayer = new FieldDisplayer(*_field);
     }
 
     ~Game() {
         delete _field;
     }
 
+    void play();
+
+private:
+    Field* _field;
+    FieldDisplayer* _fieldDisplayer;
 };
 
 
