@@ -4,14 +4,22 @@
 
 void Game::play() {
     bool continueLoop = true;
+    bool autoPlay = false;
     do {
         FieldDisplayer::clear();
         _fieldDisplayer->display();
+        if (autoPlay) {
+            _field->nextTurn();
+            continue;
+        }
         std::cout << "[0] q>uit s>tatistics n>ext : ";
         char c;
         std::cin >> c;
         if (!std::cin.fail()) {
             switch (c) {
+                case 'a':
+                    autoPlay = true;
+                    break;
                 case 'q': //quit
                     continueLoop = false;
                     break;

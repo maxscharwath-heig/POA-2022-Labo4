@@ -1,14 +1,14 @@
 #include <iostream>
 #include "Buffy.hpp"
-#include "Vampire.hpp"
+#include "Human.hpp"
 
 void Buffy::setAction(const Field& field) {
-    auto v = field.getClosestHumanoid<Vampire>(this);
-    if (v != nullptr) {
-        std::cout << "Buffy at " << getX() << " " << getY() << " is going to attack " << v->getX() << " " << v->getY()
-                  <<
-                  std::endl;
-    }
+    auto h = field.getClosestHumanoid<Human>(this);
+    if (h == nullptr) return;
+    auto x = getX();
+    auto y = getY();
+    setX((x > h->getX()) ? x - 1 : x + 1);
+    setY((y > h->getY()) ? y - 1 : y + 1);
 }
 
 void Buffy::executeAction(const Field& field) {
