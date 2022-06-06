@@ -20,14 +20,6 @@ std::ostream& Human::toStream(std::ostream& os) const {
     return os << "\033[1;35mH\033[0m";
 }
 
-bool Human::isAlive() const {
-    return _alive;
-}
-
 Human::Human(unsigned int x, unsigned int y) : Humanoid(x, y) {
 
-}
-
-void Human::kill() {
-    _alive = false;
 }

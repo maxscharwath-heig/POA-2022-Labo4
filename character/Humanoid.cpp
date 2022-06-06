@@ -32,6 +32,14 @@ void Humanoid::executeAction(Field& field) {
     }
 }
 
+bool Humanoid::isAlive() const {
+   return _alive;
+}
+
+void Humanoid::kill() {
+   _alive = false;
+}
+
 std::ostream& operator<<(std::ostream& os, const Humanoid& h) {
     return h.toStream(os);
 }
