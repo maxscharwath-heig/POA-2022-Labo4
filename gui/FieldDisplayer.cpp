@@ -1,21 +1,18 @@
 #include <iostream>
 #include "FieldDisplayer.hpp"
 
-FieldDisplayer::FieldDisplayer(const Field& field) : field(field) {
-}
-
-void FieldDisplayer::display() const {
+void FieldDisplayer::display(const Field& field) const {
     Humanoid** humanoids = field.getHumanoid2DArray();
     unsigned width = field.getWidth() + 2;
     unsigned height = field.getHeight() + 2;
     for (unsigned i = 0; i < height; i++) {
         for (unsigned j = 0; j < width; j++) {
             if ((i == 0 && (j == 0 || j == width - 1)) || (i == height - 1 && (j == 0 || j == width - 1))) {
-                std::cout << "+";
+                std::cout << CORNER;
             } else if (i == 0 || i == height - 1) {
-                std::cout << "-";
+                std::cout << HORIZONTAL;
             } else if (j == 0 || j == width - 1) {
-                std::cout << "¦";
+                std::cout << VERTICAL;
             } else {
                 unsigned x = j - 1;
                 unsigned y = i - 1;
@@ -23,12 +20,20 @@ void FieldDisplayer::display() const {
                 if (humanoid != nullptr) {
                     std::cout << *humanoid;
                 } else {
-                    std::cout << " ";
+                    std::cout << EMPTY;
                 }
             }
         }
         std::cout << std::endl;
     }
     delete humanoids;
+}
+
+void  FieldDisplayer::clear() {
+#if defined _WIN32
+    system("cls");
+#else
+    system("clear");
+#endif
 }
 

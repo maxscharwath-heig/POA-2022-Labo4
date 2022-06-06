@@ -5,20 +5,15 @@
 
 class FieldDisplayer {
 public:
-    explicit FieldDisplayer(const Field& field);
+    void display(const Field& field) const;
 
-    void display() const;
-
-    void static clear() {
-#if defined _WIN32
-        system("cls");
-#else
-        system("clear");
-#endif
-    }
+    void clear();
 
 private:
-    const Field& field;
+    static const char CORNER = '+';
+    static const char HORIZONTAL = '-';
+    static const char VERTICAL = '|';
+    static const char EMPTY = ' ';
 };
 
 
