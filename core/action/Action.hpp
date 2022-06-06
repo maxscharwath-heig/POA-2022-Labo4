@@ -4,12 +4,19 @@
 #include "Field.hpp"
 
 class Field;
+class Humanoid;
 
 class Action {
 public:
-    virtual ~Action() = default;
 
-    virtual void execute(Field& f) = 0;
+   explicit Action(Humanoid* target);
+
+   virtual ~Action() = default;
+
+   virtual void execute(Field& f) = 0;
+
+protected:
+   Humanoid* _target;
 };
 
 

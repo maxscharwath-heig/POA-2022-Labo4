@@ -1,8 +1,8 @@
 #include "Vampire.hpp"
 #include "Human.hpp"
-#include "core/action/MoveAction.hpp"
-#include "core/action/KillAction.hpp"
-#include "core/action/TransformAction.hpp"
+#include "core/action/Move.hpp"
+#include "core/action/Kill.hpp"
+#include "core/action/Transform.hpp"
 
 void Vampire::setAction(const Field& field) {
    auto h = field.getClosestHumanoid<Human>(this);
@@ -13,16 +13,16 @@ void Vampire::setAction(const Field& field) {
    //if human is one case length of vampire
    if (abs((int) x - (int) h->getX()) <= 1 && abs((int) y - (int) h->getY()) <= 1) {//TODO: check if this is correct
       if (rand() % 2 == 0) {
-         setNextAction(new KillAction(h));
+         setNextAction(new Kill(h));
       }
       else {
-         setNextAction(new TransformAction(h));
+         setNextAction(new Transform(h));
       }
    }
    else {
       if (x != h->getX()) x += x > h->getX() ? -1 : 1;
       if (y != h->getY()) y += y > h->getY() ? -1 : 1;
-      setNextAction(new MoveAction(this, x, y));
+      setNextAction(new Move(this, x, y));
    }
 }
 

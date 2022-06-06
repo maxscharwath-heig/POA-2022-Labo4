@@ -1,6 +1,6 @@
 #include <iostream>
 #include "Human.hpp"
-#include "core/action/MoveAction.hpp"
+#include "core/action/Move.hpp"
 
 void Human::setAction(const Field& field) {
     int nextX, nextY;
@@ -13,7 +13,7 @@ void Human::setAction(const Field& field) {
              || nextX < 0 || nextX >= field.getWidth()
              || nextY < 0 || nextY >= field.getHeight());
 
-    setNextAction(new MoveAction(this, nextX, nextY));
+    setNextAction(new Move(this, nextX, nextY));
 }
 
 std::ostream& Human::toStream(std::ostream& os) const {
