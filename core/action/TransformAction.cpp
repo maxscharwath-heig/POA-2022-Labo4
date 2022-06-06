@@ -1,7 +1,3 @@
-//
-// Created by Maxime Scharwath on 02.06.2022.
-//
-
 #include "TransformAction.hpp"
 #include "character/Vampire.hpp"
 

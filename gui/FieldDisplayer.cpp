@@ -4,8 +4,8 @@
 FieldDisplayer::FieldDisplayer(const Field& field) : field(field) {
 }
 
-void FieldDisplayer::display() {
-    auto humanoids = field.getHumanoid2DArray();
+void FieldDisplayer::display() const {
+    Humanoid** humanoids = field.getHumanoid2DArray();
     unsigned width = field.getWidth() + 2;
     unsigned height = field.getHeight() + 2;
     for (unsigned i = 0; i < height; i++) {
@@ -31,3 +31,4 @@ void FieldDisplayer::display() {
     }
     delete humanoids;
 }
+

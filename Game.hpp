@@ -7,17 +7,13 @@
 
 class Game {
 public:
-    Game(unsigned height, unsigned width, unsigned nbHumans, unsigned nbVampires) {
-        srand(time(NULL));
-        _field = new Field(height, width, nbHumans, nbVampires);
-        _fieldDisplayer = new FieldDisplayer(*_field);
-    }
+    Game(unsigned height, unsigned width, unsigned nbHumans, unsigned nbVampires);
 
-    ~Game() {
-        delete _field;
-    }
+    ~Game();
 
     void play();
+
+   void simulate(unsigned count, unsigned height, unsigned width, unsigned nbHumans, unsigned nbVampires);
 
 private:
     Field* _field;

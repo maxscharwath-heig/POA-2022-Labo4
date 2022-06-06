@@ -48,7 +48,6 @@ unsigned Field::nextTurn() {
         }
     }
 
-
     return ++_turn;
 }
 
@@ -82,6 +81,6 @@ Humanoid** Field::getHumanoid2DArray() const {
     return array;
 }
 
-unsigned Field::getTurn() {
+unsigned Field::getTurn() const {
     return _turn;
 }
