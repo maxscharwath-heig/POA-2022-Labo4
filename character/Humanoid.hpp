@@ -39,7 +39,7 @@ protected:
 private:
     unsigned _posX;
     unsigned _posY;
-    bool _alive;
+    bool _alive = true;
     Action* _nextAction = nullptr;
 };
 

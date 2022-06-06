@@ -64,28 +64,24 @@ void Game::play() {
 
 void Game::simulate(unsigned int count, unsigned height, unsigned width, unsigned nbHumans, unsigned nbVampires) {
 
-    Human tmp(0, 0);
     unsigned nbLoses = 0;
 
     for (unsigned i = 1; i <= count; ++i) {
         Field simulation(height, width, nbHumans, nbVampires);
-
         bool hasVampireLeft = true;
-        bool hasHumansLeft;
 
         while (hasVampireLeft) {
-
-            simulation.nextTurn();
-
-            hasVampireLeft = simulation.getClosestHumanoid<Vampire>(&tmp) != nullptr;
-            hasHumansLeft = simulation.getClosestHumanoid<Human>(&tmp) != nullptr;
+            hasVampireLeft = simulation.getNumberOfHumanoids<Vampire>() > 0;
+            bool hasHumansLeft = simulation.getNumberOfHumanoids<Human>() > 0;
 
             if (!hasHumansLeft) {
                 ++nbLoses;
                 break;
             }
+
+            simulation.nextTurn();
         }
-        std::cout << "buffy winrate :" << (i - nbLoses) << "%" << std::endl;
+        std::cout << "buffy winrate :" << (1.0 - (double)nbLoses / (double)i)*100.0 << '%' << std::endl;
     }
 }
 
