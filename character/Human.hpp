@@ -11,13 +11,6 @@ public:
     void setAction(const Field& field) override;
 
     std::ostream& toStream(std::ostream& os) const override;
-
-    bool isAlive() const override;
-
-    void kill() override;
-
-private:
-    bool _alive = true;
 };
 
 

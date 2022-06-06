@@ -19,9 +19,9 @@ public:
 
     void setNextAction(Action* action);
 
-    virtual bool isAlive() const = 0;
+    bool isAlive() const;
 
-    virtual void kill() = 0;
+    virtual void kill();
 
     virtual std::ostream& toStream(std::ostream& os) const = 0;
 
@@ -39,6 +39,7 @@ protected:
 private:
     unsigned _posX;
     unsigned _posY;
+    bool _alive;
     Action* _nextAction = nullptr;
 };
 

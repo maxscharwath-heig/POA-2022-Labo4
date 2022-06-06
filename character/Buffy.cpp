@@ -7,6 +7,7 @@
 void Buffy::setAction(const Field& field) {
     auto v = field.getClosestHumanoid<Vampire>(this);
     if (v == nullptr) return;
+
     unsigned x = getX();
     unsigned y = getY();
 
@@ -23,12 +24,8 @@ std::ostream& Buffy::toStream(std::ostream& os) const {
     return os << "\033[1;33mB\033[0m";
 }
 
-bool Buffy::isAlive() const {
-    return true;
-}
-
 Buffy::Buffy(unsigned int x, unsigned int y) : Humanoid(x, y) {}
 
 void Buffy::kill() {
-    // I am Immortal MOUAHAHAHAH
+    // I am Immortal
 }

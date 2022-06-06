@@ -7,17 +7,17 @@
 
 class Game {
 public:
-    Game(unsigned height, unsigned width, unsigned nbHumans, unsigned nbVampires);
+   Game(unsigned height, unsigned width, unsigned nbHumans, unsigned nbVampires);
 
-    ~Game();
+   ~Game();
 
-    void play();
-
-   void simulate(unsigned count, unsigned height, unsigned width, unsigned nbHumans, unsigned nbVampires);
+   void play();
 
 private:
-    Field* _field;
-    FieldDisplayer* _fieldDisplayer;
+   Field* _field;
+   FieldDisplayer* _fieldDisplayer;
+
+   void simulate(unsigned count, unsigned height, unsigned width, unsigned nbHumans, unsigned nbVampires);
 };
 
 
