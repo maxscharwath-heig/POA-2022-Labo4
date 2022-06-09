@@ -80,9 +80,12 @@ void Game::simulate(unsigned int count, unsigned height, unsigned width, unsigne
 
             simulation.nextTurn();
         }
-        FieldDisplayer::clear();
-        std::cout << "[" << i << "]" << "buffy winrate :" << (1.0 - (double) nbLoses / (double) i) * 100.0 << '%'
-                  << std::endl;
+        //show every 100 simulations
+        if (i % 100 == 0) {
+            FieldDisplayer::clear();
+            std::cout << "[" << i << "]" << "buffy winrate :" << (1.0 - (double) nbLoses / (double) i) * 100.0 << '%'
+                      << std::endl;
+        }
     }
 }
 

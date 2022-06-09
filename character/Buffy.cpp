@@ -11,14 +11,16 @@ void Buffy::setAction(const Field& field) {
         return;
     }
 
-    unsigned x = getX();
-    unsigned y = getY();
-
-    if (abs((int) x - (int) v->getX()) <= 1 && abs((int) y - (int) v->getY()) <= 1) { //TODO: check if this is correct
+    int speed = 2;
+    int x = (int) getX();
+    int y = (int) getY();
+    int deltaX = (int) v->getX() - x;
+    int deltaY = (int) v->getY() - y;
+    if (abs(deltaX) <= 1 && abs(deltaY) <= 1) {
         _nextAction = std::make_shared<Kill>(v);
     } else {
-        if (x != v->getX()) x += x > v->getX() ? -2 : 2;
-        if (y != v->getY()) y += y > v->getY() ? -2 : 2;
+        x += std::min(std::max(deltaX, -speed), speed);
+        y += std::min(std::max(deltaY, -speed), speed);
         _nextAction = std::make_shared<Move>(this, x, y);
     }
 }

@@ -8,18 +8,20 @@
 void Vampire::setAction(const Field& field) {
     auto h = field.getClosestHumanoid<Human>(this);
     if (h == nullptr) return;
-    unsigned x = getX();
-    unsigned y = getY();
-
-    if (abs((int) x - (int) h->getX()) <= 1 && abs((int) y - (int) h->getY()) <= 1) {//TODO: check if this is correct
+    int speed = 1;
+    int x = (int) getX();
+    int y = (int) getY();
+    int deltaX = (int) h->getX() - x;
+    int deltaY = (int) h->getY() - y;
+    if (abs(deltaX) <= 1 && abs(deltaY) <= 1) {
         if (std::bernoulli_distribution(0.5)(field.getRandomEngine())) {
             _nextAction = std::make_shared<Kill>(h);
         } else {
             _nextAction = std::make_shared<Transform>(h);
         }
     } else {
-        if (x != h->getX()) x += x > h->getX() ? -1 : 1;
-        if (y != h->getY()) y += y > h->getY() ? -1 : 1;
+        x += std::min(std::max(deltaX, -speed), speed);
+        y += std::min(std::max(deltaY, -speed), speed);
         _nextAction = std::make_shared<Move>(this, x, y);
     }
 }
