@@ -25,6 +25,7 @@ void Game::play() {
         _fieldDisplayer->display(*_field);
 
         if (autoPlay) {
+            std::this_thread::sleep_for(std::chrono::milliseconds(100));
             _field->nextTurn();
             continue;
         }

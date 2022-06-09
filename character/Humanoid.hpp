@@ -2,6 +2,7 @@
 #define POA_LABO4_HUMANOID_HPP
 
 #include <ostream>
+#include <memory>
 #include "Field.hpp"
 #include "core/action/Action.hpp"
 
@@ -16,8 +17,6 @@ public:
     virtual void setAction(const Field& field) = 0;
 
     void executeAction(Field& field);
-
-    void setNextAction(Action* action);
 
     bool isAlive() const;
 
@@ -36,11 +35,11 @@ public:
 protected:
     Humanoid(unsigned x, unsigned y);
 
+    std::shared_ptr<Action> _nextAction;
 private:
     unsigned _posX;
     unsigned _posY;
     bool _alive = true;
-    Action* _nextAction = nullptr;
 };
 
 std::ostream& operator<<(std::ostream& os, const Humanoid& h);

@@ -13,7 +13,7 @@ void Human::setAction(const Field& field) {
              || nextX < 0 || nextX >= field.getWidth()
              || nextY < 0 || nextY >= field.getHeight());
 
-    setNextAction(new Move(this, nextX, nextY));
+    _nextAction = std::make_shared<Move>(this, nextX, nextY);
 }
 
 std::ostream& Human::toStream(std::ostream& os) const {

@@ -19,16 +19,10 @@ unsigned Humanoid::getY() const {
     return _posY;
 }
 
-void Humanoid::setNextAction(Action* action) {
-    delete _nextAction;
-    _nextAction = action;
-}
-
 void Humanoid::executeAction(Field& field) {
-    if (_nextAction != nullptr) {
+    if (_nextAction) {
         _nextAction->execute(field);
-        delete _nextAction;
-        _nextAction = nullptr;
+        _nextAction.reset();
     }
 }
 
