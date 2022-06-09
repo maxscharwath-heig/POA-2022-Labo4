@@ -7,7 +7,7 @@ class FieldDisplayer {
 public:
     void display(const Field& field) const;
 
-    void clear();
+    static void clear();
 
 private:
     static const char CORNER = '+';

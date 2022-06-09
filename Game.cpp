@@ -21,11 +21,10 @@ void Game::play() {
     bool autoPlay = false;
 
     do {
-        _fieldDisplayer->clear();
+        FieldDisplayer::clear();
         _fieldDisplayer->display(*_field);
 
         if (autoPlay) {
-            std::this_thread::sleep_for(std::chrono::milliseconds(100));
             _field->nextTurn();
             continue;
         }
@@ -81,7 +80,9 @@ void Game::simulate(unsigned int count, unsigned height, unsigned width, unsigne
 
             simulation.nextTurn();
         }
-        std::cout << "buffy winrate :" << (1.0 - (double)nbLoses / (double)i)*100.0 << '%' << std::endl;
+        FieldDisplayer::clear();
+        std::cout << "[" << i << "]" << "buffy winrate :" << (1.0 - (double) nbLoses / (double) i) * 100.0 << '%'
+                  << std::endl;
     }
 }
 
