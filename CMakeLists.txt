@@ -17,4 +17,5 @@ add_executable(POA_Labo4
         core/action/Transform.cpp core/action/Transform.hpp
         Field.cpp Field.hpp
         Game.hpp Game.cpp
-        main.cpp core/utils.hpp)
+        Constants.hpp
+        main.cpp)

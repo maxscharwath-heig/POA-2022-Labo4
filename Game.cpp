@@ -4,15 +4,16 @@
 #include "Game.hpp"
 #include "character/Vampire.hpp"
 #include "character/Human.hpp"
+#include "Constants.hpp"
 
 Game::Game(unsigned int height, unsigned int width, unsigned int nbHumans, unsigned int nbVampires) {
     _field = new Field(height, width, nbHumans, nbVampires);
-    _fieldDisplayer = new FieldDisplayer();
+    _displayer = new FieldDisplayer();
 }
 
 Game::~Game() {
     delete _field;
-    delete _fieldDisplayer;
+    delete _displayer;
 }
 
 void Game::play() {
@@ -21,7 +22,7 @@ void Game::play() {
 
     do {
         FieldDisplayer::clear();
-        _fieldDisplayer->display(*_field);
+        _displayer->display(*_field);
 
         if (autoPlay) {
             //std::this_thread::sleep_for(std::chrono::milliseconds(100));
@@ -29,7 +30,7 @@ void Game::play() {
             continue;
         }
 
-        std::cout << "[" << _field->getTurn() << "] q>uit s>tatistics n>ext : ";
+        std::cout << "[" << _field->getTurn() << "]" << QUIT_LABEL << " " << STATISTICS_LABEL << NEXT_LABEL << std::endl;
         char c;
         std::cin >> c;
         if (!std::cin.fail()) {
@@ -37,10 +38,10 @@ void Game::play() {
                 case 'a':
                     autoPlay = true;
                     break;
-                case 'q': //quit
+                case QUIT_KEY:
                     continueLoop = false;
                     break;
-                case 's': //statistics
+                case STATISTICS_KEY:
                     simulate(10000,
                              _field->getHeight(),
                              _field->getHeight(),
@@ -48,10 +49,10 @@ void Game::play() {
                              _field->getNbVampires()
                     );
                     break;
-                case 'n': //next
+                case NEXT_KEY:
                     _field->nextTurn();
                     break;
-                default: //do nothing
+                default:
                     break;
             }
         }

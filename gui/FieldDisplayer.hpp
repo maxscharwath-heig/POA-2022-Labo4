@@ -2,18 +2,13 @@
 #define POA_LABO4_FIELDDISPLAYER_HPP
 
 #include "Field.hpp"
+#include "Constants.hpp"
 
 class FieldDisplayer {
 public:
     void display(const Field& field) const;
 
     static void clear();
-
-private:
-    static const char CORNER = '+';
-    static const char HORIZONTAL = '-';
-    static const char VERTICAL = '|';
-    static const char EMPTY = ' ';
 };
 
 
