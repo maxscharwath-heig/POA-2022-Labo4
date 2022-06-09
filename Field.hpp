@@ -2,6 +2,7 @@
 #define POA_LABO4_FIELD_HPP
 
 #include <list>
+#include <typeinfo> // typeid
 #include "character/Humanoid.hpp"
 
 class Humanoid;
@@ -33,11 +34,11 @@ public:
     unsigned getTurn() const;
 
 private:
-   const unsigned _height;
-   const unsigned _width;
-   unsigned _nbHumans;
-   unsigned _nbVampire;
-   unsigned _turn = 0;
+    const unsigned _height;
+    const unsigned _width;
+    unsigned _nbHumans;
+    unsigned _nbVampire;
+    unsigned _turn = 0;
 
     std::list<Humanoid*> _humanoids;
 };
@@ -46,7 +47,7 @@ template<class T>
 T* Field::getClosestHumanoid(Humanoid* humanoid) const {
     T* closest = nullptr;
     for (auto& h: _humanoids) {
-        if (h == humanoid || dynamic_cast<T*>(h) == nullptr)
+        if (h == humanoid || typeid(*h) != typeid(T))
             continue;
         if (closest == nullptr ||
             (humanoid->getX() - h->getX()) * (humanoid->getX() - h->getX()) +
@@ -62,7 +63,7 @@ template<class T>
 int Field::getNumberOfHumanoids() const {
     int nb = 0;
     for (auto& h: _humanoids) {
-        if (dynamic_cast<T*>(h) != nullptr)
+        if (typeid(*h) == typeid(T))
             nb++;
     }
     return nb;

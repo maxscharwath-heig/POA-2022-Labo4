@@ -2,9 +2,9 @@
 #define POA_LABO4_BUFFY_HPP
 
 
-#include "Humanoid.hpp"
+#include "Human.hpp"
 
-class Buffy : public Humanoid {
+class Buffy : public Human {
 public:
     Buffy(unsigned x, unsigned y);
 
