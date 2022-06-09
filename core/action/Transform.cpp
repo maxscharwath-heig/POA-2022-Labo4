@@ -1,7 +1,7 @@
 #include "Transform.hpp"
 #include "character/Vampire.hpp"
 
-Transform::Transform(Human* h): Kill(h) {}
+Transform::Transform(Human* h) : Kill(h) {}
 
 void Transform::execute(Field& f) {
     Kill::execute(f);

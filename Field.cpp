@@ -1,26 +1,38 @@
 #include <iostream>
+#include <random>
+#include <chrono>
 #include "Field.hpp"
 #include "character/Humanoid.hpp"
 #include "character/Buffy.hpp"
 #include "character/Human.hpp"
 #include "character/Vampire.hpp"
 
-Field::Field(unsigned int height, unsigned int width, unsigned int nbHumans, unsigned int nbVampires) : _height(height),
-                                                                                                        _width(width),
-                                                                                                        _nbHumans(
-                                                                                                              nbHumans),
-                                                                                                        _nbVampire(
-                                                                                                              nbVampires) {
+Field::Field(unsigned int height, unsigned int width, unsigned int nbHumans, unsigned int nbVampires) :
+      _height(height),
+      _width(width),
+      _nbHumans(nbHumans),
+      _nbVampire(nbVampires) {
 
-    add(new Buffy(rand() % _width, rand() % _height));
+
+    eng = new std::default_random_engine(std::chrono::system_clock::now().time_since_epoch().count());
+    std::uniform_int_distribution<unsigned> widthDistribution(0, _height - 1);
+    std::uniform_int_distribution<unsigned> heightDistribution(0, _width - 1);
+    add(new Buffy(widthDistribution(getRandomEngine()), heightDistribution(getRandomEngine())));
 
     for (size_t i = 0; i < nbHumans; ++i) {
-        add(new Human(rand() % _width, rand() % _height));
+        add(new Human(widthDistribution(getRandomEngine()), heightDistribution(getRandomEngine())));
     }
 
     for (size_t i = 0; i < nbVampires; ++i) {
-        add(new Vampire(rand() % _width, rand() % _height));
+        add(new Vampire(widthDistribution(getRandomEngine()), heightDistribution(getRandomEngine())));
     }
+}
+
+Field::~Field() {
+    for (auto& humanoid: _humanoids) {
+        delete humanoid;
+    }
+    delete eng;
 }
 
 void Field::add(Humanoid* h) {
@@ -83,4 +95,8 @@ Humanoid** Field::getHumanoid2DArray() const {
 
 unsigned Field::getTurn() const {
     return _turn;
+}
+
+std::default_random_engine& Field::getRandomEngine() const {
+    return *eng;
 }

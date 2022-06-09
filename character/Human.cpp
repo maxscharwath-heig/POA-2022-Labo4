@@ -1,13 +1,14 @@
 #include <iostream>
+#include <random>
 #include "Human.hpp"
 #include "core/action/Move.hpp"
 
 void Human::setAction(const Field& field) {
     int nextX, nextY;
-
+    std::uniform_int_distribution<> moveDist(-1, 1);
     do {
-        nextX = (int) getX() + rand() % 3 - 1;
-        nextY = (int) getY() + rand() % 3 - 1;
+        nextX = (int) getX() + moveDist(field.getRandomEngine());
+        nextY = (int) getY() + moveDist(field.getRandomEngine());
 
     } while ((nextX == 0 && nextY == 0)
              || nextX < 0 || nextX >= field.getWidth()

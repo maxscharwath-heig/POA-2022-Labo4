@@ -6,7 +6,6 @@
 #include "character/Human.hpp"
 
 Game::Game(unsigned int height, unsigned int width, unsigned int nbHumans, unsigned int nbVampires) {
-    srand(time(nullptr));
     _field = new Field(height, width, nbHumans, nbVampires);
     _fieldDisplayer = new FieldDisplayer();
 }
@@ -25,7 +24,7 @@ void Game::play() {
         _fieldDisplayer->display(*_field);
 
         if (autoPlay) {
-            std::this_thread::sleep_for(std::chrono::milliseconds(100));
+            //std::this_thread::sleep_for(std::chrono::milliseconds(100));
             _field->nextTurn();
             continue;
         }

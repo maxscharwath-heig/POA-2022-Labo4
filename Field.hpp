@@ -2,6 +2,7 @@
 #define POA_LABO4_FIELD_HPP
 
 #include <list>
+#include <random>
 #include <typeinfo> // typeid
 #include "character/Humanoid.hpp"
 
@@ -10,6 +11,8 @@ class Humanoid;
 class Field {
 public:
     Field(unsigned height, unsigned width, unsigned nbHumans, unsigned nbVampires);
+
+    ~Field();
 
     unsigned getHeight() const;
 
@@ -33,13 +36,15 @@ public:
 
     unsigned getTurn() const;
 
+    std::default_random_engine& getRandomEngine() const;
+
 private:
     const unsigned _height;
     const unsigned _width;
     unsigned _nbHumans;
     unsigned _nbVampire;
     unsigned _turn = 0;
-
+    std::default_random_engine* eng;
     std::list<Humanoid*> _humanoids;
 };
 

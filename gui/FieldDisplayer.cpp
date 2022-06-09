@@ -29,7 +29,7 @@ void FieldDisplayer::display(const Field& field) const {
     delete humanoids;
 }
 
-void  FieldDisplayer::clear() {
+void FieldDisplayer::clear() {
 #if defined _WIN32
     system("cls");
 #else
