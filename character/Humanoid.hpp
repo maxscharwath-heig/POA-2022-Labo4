@@ -13,6 +13,8 @@ class Field;
 /**
  * Class representing an humanoid
  *
+ * @author Nicolas Crausaz
+ * @author Maxime Scharwath
  */
 class Humanoid {
 public:
@@ -73,6 +75,11 @@ public:
    void setY(unsigned y);
 
 protected:
+   /**
+    * Create an new humanoid at position
+    * @param x x coordinate
+    * @param y y coordinate
+    */
    Humanoid(unsigned x, unsigned y);
 
    std::shared_ptr<Action> _nextAction;

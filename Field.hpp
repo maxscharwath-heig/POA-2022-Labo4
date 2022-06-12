@@ -100,15 +100,15 @@ public:
     * @return number of humanoid type on the field
     */
    template <class T>
-   int getNumberOfHumanoids() const;
+   unsigned getNumberOfHumanoids() const;
 
 private:
    const unsigned _height;
    const unsigned _width;
-   unsigned _nbHumans;
-   unsigned _nbVampire;
+   const unsigned _nbHumans;
+   const unsigned _nbVampire;
    unsigned _turn = 0;
-   std::default_random_engine* eng;
+   std::default_random_engine* _eng;
    std::list<Humanoid*> _humanoids;
 };
 
@@ -129,8 +129,8 @@ T* Field::getClosestHumanoid(Humanoid* humanoid) const {
 }
 
 template <class T>
-int Field::getNumberOfHumanoids() const {
-   int nb = 0;
+unsigned Field::getNumberOfHumanoids() const {
+   unsigned nb = 0;
    for (auto& h: _humanoids) {
       if (typeid(*h) == typeid(T))
          nb++;

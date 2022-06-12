@@ -32,7 +32,7 @@ Field::~Field() {
    for (auto& humanoid: _humanoids) {
       delete humanoid;
    }
-   delete eng;
+   delete _eng;
 }
 
 void Field::add(Humanoid* h) {
@@ -99,5 +99,5 @@ unsigned Field::getTurn() const {
 }
 
 std::default_random_engine& Field::getRandomEngine() const {
-   return *eng;
+   return *_eng;
 }
