@@ -10,36 +10,76 @@ class Action;
 
 class Field;
 
+/**
+ * Class representing an humanoid
+ *
+ */
 class Humanoid {
 public:
-    virtual ~Humanoid() = default;
+   virtual ~Humanoid() = default;
 
-    virtual void setAction(const Field& field) = 0;
+   /**
+    * Define the next action of an humanoid
+    * @param field the simulation field
+    */
+   virtual void setAction(const Field& field) = 0;
 
-    void executeAction(Field& field);
+   /**
+    * Execute the next action of an humanoid
+    * @param field the simulation field
+    */
+   void executeAction(Field& field);
 
-    bool isAlive() const;
+   /**
+    * Check if the humanoid is alive of dead
+    * @return true if alive, else false
+    */
+   bool isAlive() const;
 
-    virtual void kill();
+   /**
+    * Kill the humanoid
+    */
+   virtual void kill();
 
-    virtual std::ostream& toStream(std::ostream& os) const = 0;
+   /**
+    * Get the humanoid as a output stream
+    * @param os output stream
+    * @return output stream
+    */
+   virtual std::ostream& toStream(std::ostream& os) const = 0;
 
-    unsigned getX() const;
+   /**
+    * Get the current x coordinate
+    * @return x coordinate
+    */
+   unsigned getX() const;
 
-    unsigned getY() const;
+   /**
+   * Get the current y coordinate
+   * @return y coordinate
+   */
+   unsigned getY() const;
 
-    void setX(unsigned x);
+   /**
+    * Set the current x coordinate
+    * @param x x coordinate
+    */
+   void setX(unsigned x);
 
-    void setY(unsigned y);
+   /**
+    * Set the current y coordinate
+    * @param y y coordinate
+    */
+   void setY(unsigned y);
 
 protected:
-    Humanoid(unsigned x, unsigned y);
+   Humanoid(unsigned x, unsigned y);
 
-    std::shared_ptr<Action> _nextAction;
+   std::shared_ptr<Action> _nextAction;
 private:
-    unsigned _posX;
-    unsigned _posY;
-    bool _alive = true;
+   unsigned _posX;
+   unsigned _posY;
+   bool _alive = true;
 };
 
 std::ostream& operator<<(std::ostream& os, const Humanoid& h);

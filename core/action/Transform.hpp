@@ -6,11 +6,25 @@
 #include "character/Human.hpp"
 #include "Kill.hpp"
 
+/**
+ * Class representing a transformation from an Human to a Vampire
+ *
+ * @author Nicolas Crausaz
+ * @author Maxime Scharwath
+ */
 class Transform : public Kill {
 public:
-    explicit Transform(Human* h);
+   /**
+    * Prepare a transformation of an human to a vampire
+    * @param h human to transform
+    */
+   explicit Transform(Human* h);
 
-    void execute(Field& f) override;
+   /**
+    * Transform an human to a vampire
+    * @param f the simulation field
+    */
+   void execute(Field& f) override;
 };
 
 

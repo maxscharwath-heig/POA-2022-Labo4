@@ -1,6 +1,13 @@
 #ifndef POA_LABO4_CONSTANTS_HPP
 #define POA_LABO4_CONSTANTS_HPP
 
+/**
+ * Constants used for the application
+ *
+ * @author Nicolas Crausaz
+ * @author Maxime Scharwath
+ */
+
 // Menu key
 const static char STATISTICS_KEY = 's';
 const static char* STATISTICS_LABEL = "s>tatistics";

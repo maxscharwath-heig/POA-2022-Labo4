@@ -4,11 +4,25 @@
 #include "Field.hpp"
 #include "Constants.hpp"
 
+/**
+ * Class used to display a simulation field
+ *
+ * @author Nicolas Crausaz
+ * @author Maxime Scharwath
+ */
 class FieldDisplayer {
 public:
-    void display(const Field& field) const;
 
-    static void clear();
+   /**
+    * Display a field
+    * @param field the field to display
+    */
+   void display(const Field& field) const;
+
+   /**
+    * Clear the display
+    */
+   static void clear();
 };
 
 

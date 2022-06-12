@@ -6,7 +6,7 @@
 #include "gui/FieldDisplayer.hpp"
 
 /**
- * Class managing a game & simulation
+ * Class managing a Buffy game & simulation
  *
  * @author Nicolas Crausaz
  * @author Maxime Scharwath
