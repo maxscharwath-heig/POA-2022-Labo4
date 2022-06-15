@@ -5,6 +5,7 @@
 #include "character/Human.hpp"
 #include "Constants.hpp"
 #include "Utils.hpp"
+#include "FieldImpl.hpp"
 
 Game::Game(unsigned int height, unsigned int width, unsigned int nbHumans, unsigned int nbVampires) {
     _field = new Field(height, width, nbHumans, nbVampires);

@@ -112,30 +112,4 @@ private:
     std::list<Humanoid*> _humanoids;
 };
 
-template <class T>
-T* Field::getClosestHumanoid(Humanoid* humanoid) const {
-    T* closest = nullptr;
-    for (auto& h: _humanoids) {
-        if (h == humanoid || typeid(*h) != typeid(T))
-            continue;
-        if (closest == nullptr ||
-            (humanoid->getX() - h->getX()) * (humanoid->getX() - h->getX()) +
-            (humanoid->getY() - h->getY()) * (humanoid->getY() - h->getY()) <
-            (humanoid->getX() - closest->getX()) * (humanoid->getX() - closest->getX()) +
-            (humanoid->getY() - closest->getY()) * (humanoid->getY() - closest->getY()))
-            closest = dynamic_cast<T*>(h);
-    }
-    return closest;
-}
-
-template <class T>
-unsigned Field::getNumberOfHumanoids() const {
-    unsigned nb = 0;
-    for (auto& h: _humanoids) {
-        if (typeid(*h) == typeid(T))
-            nb++;
-    }
-    return nb;
-}
-
 #endif //POA_LABO4_FIELD_HPP

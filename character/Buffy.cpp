@@ -3,6 +3,7 @@
 #include "Vampire.hpp"
 #include "core/action/Kill.hpp"
 #include "core/action/Move.hpp"
+#include "FieldImpl.hpp"
 
 void Buffy::setAction(const Field& field) {
     Vampire* v = field.getClosestHumanoid<Vampire>(this);

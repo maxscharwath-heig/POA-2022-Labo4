@@ -4,6 +4,7 @@
 #include "core/action/Move.hpp"
 #include "core/action/Kill.hpp"
 #include "core/action/Transform.hpp"
+#include "FieldImpl.hpp"
 
 void Vampire::setAction(const Field& field) {
     Human* h = field.getClosestHumanoid<Human>(this);
