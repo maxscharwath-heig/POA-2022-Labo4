@@ -16,7 +16,7 @@ void FieldDisplayer::display(const Field& field) const {
             } else {
                 unsigned x = j - 1;
                 unsigned y = i - 1;
-                auto humanoid = humanoids[x + y * field.getWidth()];
+                Humanoid* humanoid = humanoids[x + y * field.getWidth()];
                 if (humanoid != nullptr) {
                     std::cout << *humanoid;
                 } else {

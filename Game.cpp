@@ -1,6 +1,5 @@
 #include <limits>
 #include <iostream>
-#include <thread>
 #include "Game.hpp"
 #include "character/Vampire.hpp"
 #include "character/Human.hpp"
@@ -25,12 +24,11 @@ void Game::play() {
         _displayer->display(*_field);
 
         if (autoPlay) {
-            //std::this_thread::sleep_for(std::chrono::milliseconds(100));
             _field->nextTurn();
             continue;
         }
 
-        std::cout << "[" << _field->getTurn() << "]" << QUIT_LABEL << " " << STATISTICS_LABEL << NEXT_LABEL << std::endl;
+        std::cout << "[" << _field->getTurn() << "]" << QUIT_LABEL << " " << STATISTICS_LABEL << " " << NEXT_LABEL << std::endl;
         char c;
         std::cin >> c;
         if (!std::cin.fail()) {

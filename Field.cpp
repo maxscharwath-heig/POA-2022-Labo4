@@ -13,8 +13,7 @@ Field::Field(unsigned int height, unsigned int width, unsigned int nbHumans, uns
         _nbHumans(nbHumans),
         _nbVampire(nbVampires) {
 
-
-   eng = new std::default_random_engine(std::chrono::system_clock::now().time_since_epoch().count());
+   _eng = new std::default_random_engine(std::chrono::system_clock::now().time_since_epoch().count());
    std::uniform_int_distribution<unsigned> widthDistribution(0, _height - 1);
    std::uniform_int_distribution<unsigned> heightDistribution(0, _width - 1);
    add(new Buffy(widthDistribution(getRandomEngine()), heightDistribution(getRandomEngine())));
@@ -29,7 +28,7 @@ Field::Field(unsigned int height, unsigned int width, unsigned int nbHumans, uns
 }
 
 Field::~Field() {
-   for (auto& humanoid: _humanoids) {
+   for (Humanoid* humanoid: _humanoids) {
       delete humanoid;
    }
    delete _eng;
