@@ -13,74 +13,74 @@ Field::Field(unsigned int height, unsigned int width, unsigned int nbHumans, uns
         _nbHumans(nbHumans),
         _nbVampire(nbVampires) {
 
-   _eng = new std::default_random_engine(std::chrono::system_clock::now().time_since_epoch().count());
-   std::uniform_int_distribution<unsigned> widthDistribution(0, _height - 1);
-   std::uniform_int_distribution<unsigned> heightDistribution(0, _width - 1);
-   add(new Buffy(widthDistribution(getRandomEngine()), heightDistribution(getRandomEngine())));
+    _eng = new std::default_random_engine(std::chrono::system_clock::now().time_since_epoch().count());
+    std::uniform_int_distribution<unsigned> widthDistribution(0, _height - 1);
+    std::uniform_int_distribution<unsigned> heightDistribution(0, _width - 1);
+    add(new Buffy(widthDistribution(getRandomEngine()), heightDistribution(getRandomEngine())));
 
-   for (size_t i = 0; i < nbHumans; ++i) {
-      add(new Human(widthDistribution(getRandomEngine()), heightDistribution(getRandomEngine())));
-   }
+    for (size_t i = 0; i < nbHumans; ++i) {
+        add(new Human(widthDistribution(getRandomEngine()), heightDistribution(getRandomEngine())));
+    }
 
-   for (size_t i = 0; i < nbVampires; ++i) {
-      add(new Vampire(widthDistribution(getRandomEngine()), heightDistribution(getRandomEngine())));
-   }
+    for (size_t i = 0; i < nbVampires; ++i) {
+        add(new Vampire(widthDistribution(getRandomEngine()), heightDistribution(getRandomEngine())));
+    }
 }
 
 Field::~Field() {
-   for (Humanoid* humanoid: _humanoids) {
-      delete humanoid;
-   }
-   delete _eng;
+    for (Humanoid* humanoid: _humanoids) {
+        delete humanoid;
+    }
+    delete _eng;
 }
 
 void Field::add(Humanoid* h) {
-   _humanoids.emplace_back(h);
+    _humanoids.emplace_back(h);
 }
 
 unsigned Field::nextTurn() {
-   // Déterminer les prochaines actions
-   for (std::list<Humanoid*>::iterator it = _humanoids.begin(); it != _humanoids.end(); it++) {
-      (*it)->setAction(*this);
-   }
+    // Déterminer les prochaines actions
+    for (std::list<Humanoid*>::iterator it = _humanoids.begin(); it != _humanoids.end(); it++) {
+        (*it)->setAction(*this);
+    }
 
-   // Executer les actions
-   for (std::list<Humanoid*>::iterator it = _humanoids.begin(); it != _humanoids.end(); it++) {
-      (*it)->executeAction(*this);
-   }
+    // Executer les actions
+    for (std::list<Humanoid*>::iterator it = _humanoids.begin(); it != _humanoids.end(); it++) {
+        (*it)->executeAction(*this);
+    }
 
-   // Enlever les humanoides tués et delete
-   for (std::list<Humanoid*>::iterator it = _humanoids.begin(); it != _humanoids.end();) {
-      if (!(*it)->isAlive()) {
-         delete (*it);
-         it = _humanoids.erase(it);
-      }
-      else {
-         ++it;
-      }
-   }
+    // Enlever les humanoides tués et delete
+    for (std::list<Humanoid*>::iterator it = _humanoids.begin(); it != _humanoids.end();) {
+        if (!(*it)->isAlive()) {
+            delete (*it);
+            it = _humanoids.erase(it);
+        }
+        else {
+            ++it;
+        }
+    }
 
-   return ++_turn;
+    return ++_turn;
 }
 
 unsigned Field::getHeight() const {
-   return _height;
+    return _height;
 }
 
 unsigned Field::getWidth() const {
-   return _width;
+    return _width;
 }
 
 unsigned Field::getNbHumans() const {
-   return _nbHumans;
+    return _nbHumans;
 }
 
 unsigned Field::getNbVampires() const {
-   return _nbVampire;
+    return _nbVampire;
 }
 
 Humanoid** Field::getHumanoid2DArray() const {
-    auto array = new Humanoid* [_height * _width];
+    Humanoid** array = new Humanoid* [_height * _width];
     for (size_t i = 0; i < _height * _width; ++i) {
         array[i] = nullptr;
     }
@@ -94,9 +94,9 @@ Humanoid** Field::getHumanoid2DArray() const {
 }
 
 unsigned Field::getTurn() const {
-   return _turn;
+    return _turn;
 }
 
 std::default_random_engine& Field::getRandomEngine() const {
-   return *_eng;
+    return *_eng;
 }

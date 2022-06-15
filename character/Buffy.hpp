@@ -1,7 +1,6 @@
 #ifndef POA_LABO4_BUFFY_HPP
 #define POA_LABO4_BUFFY_HPP
 
-
 #include "Human.hpp"
 
 /**
@@ -12,11 +11,11 @@
  */
 class Buffy : public Human {
 public:
-   /**
-    * Create a new buffy at position
-    * @param x x coordinate
-    * @param y y coordinate
-    */
+    /**
+     * Create a new buffy at position
+     * @param x x coordinate
+     * @param y y coordinate
+     */
     Buffy(unsigned x, unsigned y);
 
     void setAction(const Field& field) override;

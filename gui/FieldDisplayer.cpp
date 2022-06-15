@@ -9,17 +9,21 @@ void FieldDisplayer::display(const Field& field) const {
         for (unsigned j = 0; j < width; j++) {
             if ((i == 0 && (j == 0 || j == width - 1)) || (i == height - 1 && (j == 0 || j == width - 1))) {
                 std::cout << CORNER;
-            } else if (i == 0 || i == height - 1) {
+            }
+            else if (i == 0 || i == height - 1) {
                 std::cout << HORIZONTAL;
-            } else if (j == 0 || j == width - 1) {
+            }
+            else if (j == 0 || j == width - 1) {
                 std::cout << VERTICAL;
-            } else {
+            }
+            else {
                 unsigned x = j - 1;
                 unsigned y = i - 1;
                 Humanoid* humanoid = humanoids[x + y * field.getWidth()];
                 if (humanoid != nullptr) {
                     std::cout << *humanoid;
-                } else {
+                }
+                else {
                     std::cout << EMPTY;
                 }
             }

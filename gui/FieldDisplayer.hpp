@@ -13,11 +13,11 @@
 class FieldDisplayer {
 public:
 
-   /**
-    * Display a field
-    * @param field the field to display
-    */
-   void display(const Field& field) const;
+    /**
+     * Display a field
+     * @param field the field to display
+     */
+    void display(const Field& field) const;
 };
 
 

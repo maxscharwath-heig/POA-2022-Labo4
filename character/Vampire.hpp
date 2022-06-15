@@ -11,16 +11,16 @@
  */
 class Vampire : public Humanoid {
 public:
-   /**
-    * Create a new vampire at position
-    * @param x x coordinate
-    * @param y y coordinate
-    */
-   Vampire(unsigned x, unsigned y);
+    /**
+     * Create a new vampire at position
+     * @param x x coordinate
+     * @param y y coordinate
+     */
+    Vampire(unsigned x, unsigned y);
 
-   void setAction(const Field& field) override;
+    void setAction(const Field& field) override;
 
-   std::ostream& toStream(std::ostream& os) const override;
+    std::ostream& toStream(std::ostream& os) const override;
 };
 
 

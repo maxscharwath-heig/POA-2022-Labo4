@@ -1,7 +1,6 @@
 #ifndef POA_LABO4_HUMAN_HPP
 #define POA_LABO4_HUMAN_HPP
 
-
 #include "Humanoid.hpp"
 
 /**
@@ -12,11 +11,11 @@
  */
 class Human : public Humanoid {
 public:
-   /**
-    * Create a new human at position
-    * @param x x coordinate
-    * @param y y coordinate
-    */
+    /**
+     * Create a new human at position
+     * @param x x coordinate
+     * @param y y coordinate
+     */
     Human(unsigned x, unsigned y);
 
     void setAction(const Field& field) override;

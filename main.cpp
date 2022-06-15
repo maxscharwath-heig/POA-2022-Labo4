@@ -16,12 +16,14 @@ int main(int argc, char** argv) {
         width = std::stoul(argv[2]);
         nbHumans = std::stoul(argv[3]);
         nbVampires = std::stoul(argv[4]);
-    } else if (argc == 1) { // Default values
+    }
+    else if (argc == 1) { // Default values
         height = 50;
         width = 50;
         nbHumans = 20;
         nbVampires = 10;
-    } else { // If the user gave wrong parameters
+    }
+    else { // If the user gave wrong parameters
         std::cout << "Usage: " << argv[0] << " <height> <width> <nbHumans> <nbVampires>" << std::endl;
         return EXIT_FAILURE;
     }

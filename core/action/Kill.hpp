@@ -12,16 +12,16 @@
  */
 class Kill : public Action {
 public:
-   /**
-    * Prepare the kill of an humanoid
-    */
-   explicit Kill(Humanoid* h);
+    /**
+     * Prepare the kill of an humanoid
+     */
+    explicit Kill(Humanoid* h);
 
-   /**
-    * Kill the humanoid
-    * @param f the simulation field
-    */
-   void execute(Field& f) override;
+    /**
+     * Kill the humanoid
+     * @param f the simulation field
+     */
+    void execute(Field& f) override;
 };
 
 

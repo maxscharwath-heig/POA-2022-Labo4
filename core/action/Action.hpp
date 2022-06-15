@@ -15,22 +15,22 @@ class Humanoid;
  */
 class Action {
 public:
-   /**
-    * Execute the action
-    * @param f the simulation field
-    */
-   virtual void execute(Field& f) = 0;
+    /**
+     * Execute the action
+     * @param f the simulation field
+     */
+    virtual void execute(Field& f) = 0;
 
-   virtual ~Action() = default;
+    virtual ~Action() = default;
 
 protected:
-   /**
-    * Prepare an action on a target humanoid
-    * @param target target humanoid
-    */
-   explicit Action(Humanoid* target);
+    /**
+     * Prepare an action on a target humanoid
+     * @param target target humanoid
+     */
+    explicit Action(Humanoid* target);
 
-   Humanoid* _target;
+    Humanoid* _target;
 };
 
 

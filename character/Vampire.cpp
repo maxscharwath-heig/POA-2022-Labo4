@@ -6,7 +6,7 @@
 #include "core/action/Transform.hpp"
 
 void Vampire::setAction(const Field& field) {
-    auto h = field.getClosestHumanoid<Human>(this);
+    Human* h = field.getClosestHumanoid<Human>(this);
     if (h == nullptr) return;
     int speed = 1;
     int deltaX = (int) h->getX() - (int) getX();
@@ -14,14 +14,16 @@ void Vampire::setAction(const Field& field) {
     if (abs(deltaX) <= 1 && abs(deltaY) <= 1) {
         if (std::bernoulli_distribution(0.5)(field.getRandomEngine())) {
             _nextAction = std::make_shared<Kill>(h);
-        } else {
+        }
+        else {
             _nextAction = std::make_shared<Transform>(h);
         }
-    } else {
+    }
+    else {
         _nextAction = std::make_shared<Move>(
-              this,
-              getX() + std::min(std::max(deltaX, -speed), speed),
-              getY() + std::min(std::max(deltaY, -speed), speed)
+                this,
+                getX() + std::min(std::max(deltaX, -speed), speed),
+                getY() + std::min(std::max(deltaY, -speed), speed)
         );
     }
 }

@@ -5,7 +5,7 @@
 #include "core/action/Move.hpp"
 
 void Buffy::setAction(const Field& field) {
-    auto v = field.getClosestHumanoid<Vampire>(this);
+    Vampire* v = field.getClosestHumanoid<Vampire>(this);
     if (v == nullptr) {
         Human::setAction(field);
         return;
@@ -16,11 +16,12 @@ void Buffy::setAction(const Field& field) {
     int deltaY = (int) v->getY() - (int) getY();
     if (abs(deltaX) <= 1 && abs(deltaY) <= 1) {
         _nextAction = std::make_shared<Kill>(v);
-    } else {
+    }
+    else {
         _nextAction = std::make_shared<Move>(
-              this,
-              getX() + std::min(std::max(deltaX, -speed), speed),
-              getY() + std::min(std::max(deltaY, -speed), speed)
+                this,
+                getX() + std::min(std::max(deltaX, -speed), speed),
+                getY() + std::min(std::max(deltaY, -speed), speed)
         );
     }
 }
