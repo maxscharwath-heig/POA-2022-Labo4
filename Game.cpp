@@ -17,25 +17,17 @@ Game::~Game() {
 
 void Game::play() {
     bool continueLoop = true;
-    bool autoPlay = false;
 
     do {
         FieldDisplayer::clear();
         _displayer->display(*_field);
 
-        if (autoPlay) {
-            _field->nextTurn();
-            continue;
-        }
-
-        std::cout << "[" << _field->getTurn() << "]" << QUIT_LABEL << " " << STATISTICS_LABEL << " " << NEXT_LABEL << std::endl;
+        std::cout << "[" << _field->getTurn() << "]" << QUIT_LABEL << " " << STATISTICS_LABEL << " " << NEXT_LABEL
+                  << std::endl;
         char c;
         std::cin >> c;
         if (!std::cin.fail()) {
             switch (c) {
-                case 'a':
-                    autoPlay = true;
-                    break;
                 case QUIT_KEY:
                     continueLoop = false;
                     break;
@@ -79,13 +71,16 @@ void Game::simulate(unsigned int count, unsigned height, unsigned width, unsigne
 
             simulation.nextTurn();
         }
-        //show every 100 simulations
+        // Show every 100 simulations
         if (i % 100 == 0) {
             FieldDisplayer::clear();
             std::cout << "[" << i << "]" << "buffy winrate :" << (1.0 - (double) nbLoses / (double) i) * 100.0 << '%'
                       << std::endl;
         }
     }
+
+    std::cout << '\n' << "Press enter to continue";
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 }
 
 
