@@ -80,17 +80,17 @@ unsigned Field::getNbVampires() const {
 }
 
 Humanoid** Field::getHumanoid2DArray() const {
-   auto array = new Humanoid* [_height * _width];
-   for (unsigned i = 0; i < _height * _width; i++) {
-      array[i] = nullptr;
-   }
+    auto array = new Humanoid* [_height * _width];
+    for (size_t i = 0; i < _height * _width; ++i) {
+        array[i] = nullptr;
+    }
 
-   for (Humanoid* humanoid: _humanoids) {
-      if (humanoid->getX() >= _width || humanoid->getY() >= _height)
-         continue;
-      array[humanoid->getX() + humanoid->getY() * _width] = humanoid;
-   }
-   return array;
+    for (Humanoid* humanoid: _humanoids) {
+        if (humanoid->getX() >= _width || humanoid->getY() >= _height)
+            continue;
+        array[humanoid->getX() + humanoid->getY() * _width] = humanoid;
+    }
+    return array;
 }
 
 unsigned Field::getTurn() const {

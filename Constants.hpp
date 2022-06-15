@@ -22,5 +22,9 @@ static const char HORIZONTAL = '-';
 static const char VERTICAL = '|';
 static const char EMPTY = ' ';
 
+//TEXT
+static const char* BUFFY_WINRATE = "Buffy winrate: ";
+static const char* PRESS_ENTER = "Press enter to continue";
+
 
 #endif //POA_LABO4_CONSTANTS_HPP

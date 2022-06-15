@@ -18,11 +18,6 @@ public:
     * @param field the field to display
     */
    void display(const Field& field) const;
-
-   /**
-    * Clear the display
-    */
-   static void clear();
 };
 
 

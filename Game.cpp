@@ -4,6 +4,7 @@
 #include "character/Vampire.hpp"
 #include "character/Human.hpp"
 #include "Constants.hpp"
+#include "Utils.hpp"
 
 Game::Game(unsigned int height, unsigned int width, unsigned int nbHumans, unsigned int nbVampires) {
     _field = new Field(height, width, nbHumans, nbVampires);
@@ -19,7 +20,7 @@ void Game::play() {
     bool continueLoop = true;
 
     do {
-        FieldDisplayer::clear();
+        clearScreen();
         _displayer->display(*_field);
 
         std::cout << "[" << _field->getTurn() << "]" << QUIT_LABEL << " " << STATISTICS_LABEL << " " << NEXT_LABEL
@@ -73,13 +74,13 @@ void Game::simulate(unsigned int count, unsigned height, unsigned width, unsigne
         }
         // Show every 100 simulations
         if (i % 100 == 0) {
-            FieldDisplayer::clear();
-            std::cout << "[" << i << "]" << "buffy winrate :" << (1.0 - (double) nbLoses / (double) i) * 100.0 << '%'
+            clearScreen();
+            std::cout << "[" << i << "]" << BUFFY_WINRATE << (1.0 - (double) nbLoses / (double) i) * 100.0 << '%'
                       << std::endl;
         }
     }
 
-    std::cout << '\n' << "Press enter to continue";
+    std::cout << '\n' << PRESS_ENTER;
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 }
 

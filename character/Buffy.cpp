@@ -12,16 +12,16 @@ void Buffy::setAction(const Field& field) {
     }
 
     int speed = 2;
-    int x = (int) getX();
-    int y = (int) getY();
-    int deltaX = (int) v->getX() - x;
-    int deltaY = (int) v->getY() - y;
+    int deltaX = (int) v->getX() - (int) getX();
+    int deltaY = (int) v->getY() - (int) getY();
     if (abs(deltaX) <= 1 && abs(deltaY) <= 1) {
         _nextAction = std::make_shared<Kill>(v);
     } else {
-        x += std::min(std::max(deltaX, -speed), speed);
-        y += std::min(std::max(deltaY, -speed), speed);
-        _nextAction = std::make_shared<Move>(this, x, y);
+        _nextAction = std::make_shared<Move>(
+              this,
+              getX() + std::min(std::max(deltaX, -speed), speed),
+              getY() + std::min(std::max(deltaY, -speed), speed)
+        );
     }
 }
 

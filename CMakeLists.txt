@@ -18,4 +18,4 @@ add_executable(POA_Labo4
         Field.cpp Field.hpp
         Game.hpp Game.cpp
         Constants.hpp
-        main.cpp)
+        main.cpp Utils.hpp)
